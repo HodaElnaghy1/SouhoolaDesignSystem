@@ -24,9 +24,9 @@ struct DocumentUploadView: View {
         static let stokeWidth: CGFloat = 1
     }
     
-    public init(showError: Bool, errorMessage: String? = nil, imageSelected: UIImage = UIImage(), documentUploadText: String) {
-        self.showError = showError
-        self.errorMessage = errorMessage
+    public init(showError: Binding<Bool>, errorMessage: Binding<String?>? = nil, imageSelected: UIImage = UIImage(), documentUploadText: String) {
+        _showError = showError
+        _errorMessage = errorMessage ?? Binding.constant(nil)
         self.imageSelected = imageSelected
         self.documentUploadText = documentUploadText
     }

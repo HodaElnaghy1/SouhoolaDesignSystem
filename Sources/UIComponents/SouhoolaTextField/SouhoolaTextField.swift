@@ -22,11 +22,10 @@ public struct SouhoolaTextField: View {
         static let stokeWidth: CGFloat = 1
     }
     
-    public init(name: String, showError: Bool, verified: Bool, errorMessage: String? = nil, placeholderText: String) {
-        self.name = name
-        self.showError = showError
-        self.verified = verified
-        self.errorMessage = errorMessage
+    public init(showError: Binding<Bool>, verified: Binding<Bool>, errorMessage: Binding<String?>? = nil, placeholderText: String) {
+        _showError = showError
+        _verified = verified
+        _errorMessage = errorMessage ?? Binding.constant(nil)
         self.placeholderText = placeholderText
     }
     
