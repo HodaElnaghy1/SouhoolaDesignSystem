@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DocumentUploadView: View {
+public struct DocumentUploadView: View {
     @State public var openCameraRoll = false
     @State public var imageName: String = "IMG.jpeg"
     @State public var isImageSelected: Bool = false
@@ -31,7 +31,7 @@ struct DocumentUploadView: View {
         self.documentUploadText = documentUploadText
     }
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             VStack(alignment: .leading) {
                 HStack {
