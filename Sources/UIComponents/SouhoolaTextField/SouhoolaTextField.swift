@@ -13,6 +13,7 @@ public struct SouhoolaTextField: View {
     @Binding public var verified: Bool
     @Binding public var errorMessage: String?
     public let placeholderText: String
+    public let isDisabled: Bool
     
     private enum Constant {
         static let verticalSpacing: CGFloat = 8
@@ -22,17 +23,19 @@ public struct SouhoolaTextField: View {
         static let stokeWidth: CGFloat = 1
     }
     
-    public init(showError: Binding<Bool>, verified: Binding<Bool>, errorMessage: Binding<String?>? = nil, placeholderText: String) {
+    public init(showError: Binding<Bool>, verified: Binding<Bool>, errorMessage: Binding<String?>? = nil, placeholderText: String, isDisabled: Bool = false) {
         _showError = showError
         _verified = verified
         _errorMessage = errorMessage ?? Binding.constant(nil)
         self.placeholderText = placeholderText
+        self.isDisabled = isDisabled
     }
     
     public var body: some View {
         VStack(alignment: .leading, spacing: Constant.verticalSpacing) {
             HStack {
                 TextField(placeholderText, text: $name)
+                    .disabled(isDisabled)
                     .padding(.horizontal, Constant.padding)
                 if showError {
                     Image(SouhooleImages.textFieldError.imageName)
